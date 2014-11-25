@@ -1,0 +1,116 @@
+Quick-and-dirty documentation for libvo from libmpeg2 0.3.1
+Kees Cook <mpeg2@outflux.net>
+2003-04-17
+
+
+
+Basic Usage Pseudocode
+----------------------
+
+vo_driver_t *     drivers     = NULL;
+vo_open_t *       output_open = NULL;
+vo_instance_t *   output      = NULL;
+vo_setup_result_t setup_result;
+
+/* find the desired driver */
+drivers = vo_drivers();
+for (i = 0; drivers && drivers[i].name != NULL; i++) {
+        if (this is the one you want) {
+                output_open = drivers[i].open;
+                break; 
+        }
+}
+if (!output_open) {
+        blow up: no valid output found
+}
+
+/* open the output driver */
+if (!(output = output_open())) {
+        blow up: instance failed to initialize
+}
+
+
+/* start up decoder */
+mpeg2dec=mpeg2_init();
+
+while (data) {        
+        const mpeg2_info_t * info;
+
+        get some data
+
+        mpeg2_buffer(mpeg2dec,data_start,data_end);
+        info=mpeg2_info(mpeg2dec);
+        switch (mpeg2_parse(mpeg2dec)) {
+        case -1:
+            /* needs more data */
+            continue;
+        case STATE_SEQUENCE:
+            /* sequence started, so initialize output window */
+            if (output->setup (output, info->sequence->width,
+                               info->sequence->height, &setup_result)) {
+                fprintf (stderr, "display setup failed\n");
+                exit (1);
+            }
+            /* does the output need to be converted? */
+            if (setup_result.convert)
+                mpeg2_convert (mpeg2dec, setup_result.convert, NULL);
+            /* can the output provide an fbuf area? */
+            if (output->set_fbuf) {
+                uint8_t * buf[3];
+                void * id;
+
+                mpeg2_custom_fbuf (mpeg2dec, 1);
+                output->set_fbuf (output, buf, &id);
+                mpeg2_set_buf (mpeg2dec, buf, id);
+                output->set_fbuf (output, buf, &id);
+                mpeg2_set_buf (mpeg2dec, buf, id);
+            } else if (output->setup_fbuf) {
+                uint8_t * buf[3];
+                void * id;
+
+                output->setup_fbuf (output, buf, &id);
+                mpeg2_set_buf (mpeg2dec, buf, id);
+                output->setup_fbuf (output, buf, &id);
+                mpeg2_set_buf (mpeg2dec, buf, id);
+                output->setup_fbuf (output, buf, &id);
+                mpeg2_set_buf (mpeg2dec, buf, id);
+            }
+            break;
+        case STATE_PICTURE:
+            /* picture is starting */
+            if (output->set_fbuf) {
+                uint8_t * buf[3];
+                void * id;
+
+                output->set_fbuf (output, buf, &id);
+                mpeg2_set_buf (mpeg2dec, buf, id);
+            }
+            if (output->start_fbuf)
+                output->start_fbuf (output, info->current_fbuf->buf,
+                                    info->current_fbuf->id);
+            break;
+        case STATE_SLICE:
+        case STATE_END:
+            /* draw current picture */
+            if (info->display_fbuf) {
+                output->draw (output, info->display_fbuf->buf,
+                              info->display_fbuf->id);
+            }
+            if (output->discard && info->discard_fbuf)
+                output->discard (output, info->discard_fbuf->buf,
+                                 info->discard_fbuf->id);
+            break;
+        }
+}
+
+/* shutdown decoder */
+mpeg2_close(mpeg2dec);
+mpeg2dec=NULL;
+
+/* close output driver */
+if (output && output->close) output->close(output);
+output=NULL;
+
+
+
+

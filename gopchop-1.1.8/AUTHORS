@@ -1,0 +1,22 @@
+Kees Cook <mpeg2@outflux.net>
+
+libvo (and libmpeg2) code originally by:
+ * Copyright (C) 2000-2002 Michel Lespinasse <walken@zoy.org>
+ * Copyright (C) 1999-2000 Aaron Holtzman <aholtzma@ess.engr.uvic.ca>
+
+Contributors:
+	- Louis-Michel Gelinas (gello)
+		- French translation
+		- locale fix-ups
+	- Scott Smith
+		- found a bug in my bit decoding of GOP secs/pictures
+	- Karlheinz Pischke
+		- German translation
+	- Tom Pfeifer
+		- Run-speed code idea
+	- John R. Hogerhuis
+		- gopchop, gtkspu, and mpegcat manpages
+	- Bryce Harrington
+		- organization, website, publicity!
+
+(I know I've forgotten people; please email me a reminder.)

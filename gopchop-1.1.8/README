@@ -1,0 +1,326 @@
+gopchop - MPEG2 GOP-accurate editor
+http://gopchop.org/
+Development Version: 1.1.x
+Released under GNU General Public License
+Kees Cook (kees@outflux.net)
+
+
+This tool is used for people wanting to take sections out of MPEG2-PS 
+files without re-encoding the resulting frames.  The idea is to write 
+specific "Group of Pictures" (GOP) sections to a new MPEG2-PS file.  These 
+GOPs will decode correctly (in theory), and the gaps won't be noticed.  I 
+wrote this tool to edit commercials out of MPEG2 files produced by my 
+KFir MPEG2 capture card.  Using this tool for anything else is really beyond
+the scope of its design.
+
+
+Requirements
+------------
+For gopchop to work, you need two things installed: GTK-1.2, and the 0.4.0
+version of mpeg2dec (see http://libmpeg2.sourceforge.net/).  Newer versions
+of libmpeg2 may or may not work, depending on the API changes.
+
+
+Configuring/Compiling
+---------------------
+"./configure" should do the trick.  If you some pre-3.0 version of gcc,
+you may have Issues(tm) compiling (and running).  I'd recommend using
+3.0+ of gcc and g++.  If you have both packages installed (RedHat 7.2),
+you can run "CC=gcc3 CXX=g++3 ./configure" to force configure to use
+the right compiler.
+
+I'm still inexperienced when it comes to making and using "./configure" 
+files, so for computers that are not mine, you might have to fix things to 
+get everything to compile.  If you find stuff that needs correcting, 
+please email me and I'll update it.  :)
+
+These are the commands I type to build gopchop:
+
+./configure
+make
+make install
+
+If things blow up with autoconf or automake, you can try rebuilding the
+configure script:
+
+./autogen.sh
+
+If things still resist working right, please email me, and hopefully we can
+figure it out.  :)
+
+
+Using gopchop
+-------------
+The basic way to use gopchop is like so:
+
+ 1) Run gopchop.
+ 2) Select an MPEG2 with "File / Open".
+ 3) Drag the slider to the first GOP you want to have in a clip.
+		(You can disable "Edit / Preferences... / Auto Refresh" to seek
+		 faster, and then click "Refresh" to see where you
+		 are in the file.)
+ 4) Click "Start Mark".
+ 5) Drag the slider to the last GOP you want in the clip.
+ 6) Click "End Mark".  (If you drag the slider somewhere before the
+		first mark, "End Mark" will not do anything.)
+ 7) Repeat steps 3 through 6 to select all the clips you want saved.
+ 8) Drag clips up and down to reorder them in the Clip List window.
+ 9) To delete unwanted clips, select it, and hit Del or Backspace.
+10) Save the clips to a new MPEG2 with "File / Export".
+
+If you want to save different clips, select "Edit / Clear" and start 
+over at step 3.  If you want to use a different source MPEG2, select "File 
+/ Close" and start over at step 1.
+
+At present, I don't support saving clips from multiple different MPEG2 
+source files.  In the future, perhaps.
+
+This is a *LOSSY* process on MPEGs that have open GOPs.  To close a GOP, I
+must toss B-Frames at the start of a GOP.  If you were to mark each frame in
+an MPEG for splicing in gopchop, you would end up with fewer frames than you
+started with.  To "close" an open GOP, I must toss those B-Frames.  To
+stop this behavior, uncheck the "Drop Orphaned Frames" option in the
+"Preferences" window.
+
+
+Options
+-------
+Right now, there are several options available in gopchop.  The are in the
+"Edit / Preferences..." window:
+  Video Output Driver
+    Select which video driver you want to use for playback.  The Xv drivers
+    correctly handle aspect changes.
+  Default Run Speed
+    To the right of the "Run" button is the "speed" bar.  Normally,
+    this is "1" by default.  It represents the number of GOPs to move forward
+    while in "run" mode.  Things can get broken-looking depending on your
+    source MPEG2-PS, if you set this above 1.
+  Run Loop
+    With this on, playback of the stream (via the "Run" button) will loop
+    back around to the start when it passes the end of the stream.
+  Auto Refresh
+    With this on, any time the current GOP changes (via "Prev", "Next", or
+    "Run"), the GOP decode window will be updated.  If you're scanning
+    through a long stream, it's faster to turn this off, and just click the
+    "Refresh" button when you want to see where you are.
+  Drop Orphaned Frames
+    With this on, all the B-Frames at the start of an open GOP on a clip
+    boundry will be removed from the stream.  This is available so that
+    the decoders that don't pay attention to the "edited" GOP flag won't
+    get confused by the orphaned B-Frames.
+  Adjust GOP Timestamps
+    This adjusts all GOP timestamps to start at 0:00.0 so that they don't
+    jump ahead at cut points.
+  Force Prepended System Header
+    Adds a Pack with a System Header for unusual streams that need it.  May
+    be needed for some DVD authoring tools.
+  Drop Trailing Pack with System Header
+    During an export, this drop the final Pack if it contains a System
+    Header.  May be needed for some DVD authoring tools.
+  Ignore Program End Codes
+    Continue parsing the input stream even if a "Program End" code is seen.
+    This is useful when working on concatenated MPEG files.
+  Ignore Errors
+    This will disable the error tracing normally done when loading a
+    stream.  This is handy if you broken or weird stream that you still want
+    to try and load, but you don't want to get spammed by all the diagnostic
+    warnings.
+
+
+VOB Files
+---------
+Since DVD VOB files are MPEG2, you can use gopchop to pull scenes.  
+HOWEVER, gopchop is not a DVD-authentication tool.  I might go look at 
+libdvdread, but I require an mmap-able file interface (like, say, a direct 
+filesystem "open" call).  If you have unencrypted DVDs, or can get the 
+unencrypted VOB somewhere to use "open" on it, gopchop should have no 
+problems with it.
+
+
+What to expect during MPEG2 loading
+-----------------------------------
+Please keep an eye on your standard error output.  If you have a file that
+gopchop doesn't like, you'll hear about it during load on stderr.  If you
+want to have gopchop ignore all errors during a load, just check the
+"Ignore Errors" option in the "Preferences" window.  This is handy for some
+formats that have repeating harmless errors.
+
+Usually, when gopchop loads an MPEG2, there will be some "errors" near the 
+end of the file.  These errors can generally be ignored.  They have to do 
+with how your MPEG2 was created, and expected packet information or 
+end-of-file codes might be missing.  That's perfectly okay.
+
+I didn't implement parsing for every MPEG2 System packet header out there.  
+It's in my TODO list to do it, but you might not be able to load some 
+MPEG2s.  The error will say something about "Need to write a parsing 
+routine".  Email me if you run into this, and I can get it finished up for 
+you.
+
+If you have an MPEG2-PS file that doesn't have GOPs correctly built, you may
+need to remultiplex your MPEG2-PS file first.  I recommend using "mplex" from
+the siemens DVB tools: http://www.linuxtv.org/download/dvb/
+
+If your MPEG2-PS file doesn't map single Packs to each Frame, gopchop may
+also get freaky.  If your MPEG2-PS file doesn't start GOPs on video packet
+boundries, you may see artifacts at the split-points.  If you see the warning
+"Whoa: I-Frame number X seen in the same GOP!?" this is probably the cause.
+
+At present, gopchop is not very memory efficient or fast (I was trying to
+get it to just _work_ first).  It will allocate about 10% of the MPEG2-PS
+file's size in memory.  For example, if you have a 1GB MPEG2-PS file, expect
+that gopchop will end up allocating about 100MB of memory to load it.
+
+
+How it works
+------------
+I scan the MPEG2 for a full list of System packets, then examine the
+Program Element Stream packets they contain.  In the video PES, I look for
+GOP headers (and Picture headers).  Each GOP is then mapped back to the
+System packets that contain it (a full GOP can span multiple VES packets,
+and multiple System packets).  When a GOP is saved to a new file, the
+entire System packet list for that GOP is written as a byte-for-byte copy
+from the source MPEG2. In theory, this will take any audio streams along
+for the ride.  So far, so good.  :)
+
+In the "Info" box, the "Offset" column shows the system packet offset
+(for GOPs) and the video packet offset (for Pictures).  The "Bytes"
+column lists the bytes contained by all the system packets (for the GOP),
+and all the video packets in a Picture.  You'll notice that the Offset
+plus the Bytes don't add up to the next Picture's Offset.  This is because
+there is stuff between the video packets.  :)  The GOP "Bytes" and "Offset",
+however, should add up to the next GOP's "Offset" value.
+
+The settings under the "Preferences" window are automatically saved to
+".gopchop/options" in your home directory.
+
+
+KNOWN ISSUES
+------------
+libmpeg2 (and libvo) sometimes just up and segfault when they bring up a
+window.  In porting to libmpeg2 0.4.0, I haven't seen this problem any
+more.  Hopefully it's gone.  If it's not, let me know, and I'll continue
+to try to isolate it.  (Actually, now I see it again at the end of some
+weirder streams.)
+
+Some audio streams don't take kindly to be chopped like this.  However, 
+they usually have CRC to detect problems.  For example, when I snipped
+together some scenes from a DVD, and then played it back with "MPlayer",
+the AC3 audio stream reported CRC errors and gracefully dropped the garbled 
+packet.  As for the playback, I didn't notice it at all.
+
+gopchop assumes that all GOPs will appear in the first video PES packet of 
+a System packet.  Technically, this might not be true, but in practice, 
+this seems to happen.  As a result, gopchop could fail to load some 
+"unusual" MPEG2 files.  If you have some examples, please email me, and 
+maybe I can fix my code.  :)  (BTW: I've found a snippet of a DVD I have
+that does this, so I'm working to make things saner now...)  Generally,
+gopchop works best with hardware encoder streams, rather than software
+generated streams.
+
+Since gopchop doesn't alter the stream it writes back to disk, things like
+time-stamps are really bizarre.  In players like MPlayer, you'll see the
+time-stamp during playing jump forward at each splice point.  In fact,
+this seriously breaks some players, and I'm hoping to figure out how to
+get around it.  I've taken a quick look at "gop-fixup" by Mark Rages, and
+I'm hoping to generalize his code and add it to gopchop.  For more info:
+http://mlug.missouri.edu/~markrages/tavi/index.php?page=GopFixup
+
+The "correct" way to edit MPEG2-PS files is to just set the "broken" flag
+in the GOP, and the decoder will throw away the B-frames following the
+I-frame in an open GOP.  However, it seems that at least libmpeg2 doesn't
+honor the "broken" flag, and I bet other decoders don't too.  Therefore,
+I've done BOTH: I've set the "broken" flag, AND removed the B-Frames.
+I'm worried that this will break time sync, but it's the only way to
+stop from having decoding artifacts due to the B-frames in the open GOP
+referring to some previous P-Frame that doesn't exist any more.  If you
+want to NOT drop these orphaned B-frames, uncheck the "Drop Orphaned
+Frames" checkbox in the "Preferences" window.
+
+During video display, the aspect ratio is ignored in everything except
+the "Xv" drivers.  Doing software resizing for the other drivers is pretty
+low on my list of things to fix since gopchop isn't technically a viewer.  :)
+
+
+Special Features
+----------------
+If you're really bold, you can try the --pipe command to hook your up
+a different viewer instead of the internal drivers.  I've only played
+with "mplayer" doing this, and it does a pretty good job.  Nasty A/V sync
+problems appear if you try to skip around with gopchop's "auto-refresh"
+still selected, so try it without that option.
+
+
+Acknowledgements (also see the "AUTHORS" file)
+----------------------------------------------
+Kirsten for not kicking me out of the house while I hacked the first version
+of this together for a week straight.  :)
+
+Paul for having lots and lots of commercials to edit out of huge KFir MPEG2s.
+
+Various people from the KFir MPEG2 list (mpeg2@linuxtv.org) for guiding me
+towards this program's basic design and helping to stomp bugs, especially:
+	Warren Young (warren@etr-usa.com)
+	Marcus Metzler (mocm@convergence.de)
+	Bram Stolk (b.stolk@chello.nl)
+
+Brian (briand@zipcon.net) for being so patient with my broken builds.  :)
+
+My fantastic "beta testers" who didn't know they were getting into beta
+testing until it was too late:
+	Chris Chiappa <chris@chiappa.net>		(TiVo Extraction)
+	Stuart L. Morris <stuart@xover.co.uk>		(TS-to-PS)
+	Wolfgang Goeller <wgoeller@swissonline.ch>
+
+libmpeg2 and libvo authors:
+ * Copyright (C) 2000-2003 Michel Lespinasse <walken@zoy.org>
+ * Copyright (C) 1999-2000 Aaron Holtzman <aholtzma@ess.engr.uvic.ca>
+
+David Philippi for pointing out some ugly buffer strategies I was using.
+
+Tomi Ollila for pointing out a problem with how I used libmpeg2's states,
+	the lack of proper fseek/fseeko usage, and some example MPEG2-PS
+	files.
+
+Tom Pfeifer, Ivo Koethnig, Klaus Brandl, and others for great example
+	MPEG2-PS files that I've used to test parsing and crashing.
+
+Bryce Harrington for reorganizing the project, building the new website,
+	and showing me how bring life back to the GOPchop community.
+
+Tony Mancill for hunting down a 3 year old Xv bug that was crashing everyone.
+
+
+Random Stuff
+------------
+There are two cool utilities included in this package.
+
+One is called "mpegcat" and has lots of options.  It's basically been my
+tool for testing ideas for a new file parsing routine.  You can also extract
+streams with it.
+
+The other is called "gtkspu" and is used to display SPU bitmaps (DVD subtitles,
+menus, etc).  It's really a quicky program, but it works for what I basically
+wanted it to do: show me what a given SPU stream had in it.
+
+
+Translations
+------------
+See the "ABOUT-NLS" file for "gettext" details.  To create another 
+translation template, go into the "po" directory, and type:
+
+  msginit -i gopchop.pot -o CODE.po
+
+where "CODE" is the expected lang code.  To update an existing .po file
+from a changed template, type:
+
+  msgmerge -U CODE.po gopchop.pot
+
+To test your language, gopchop must be installed (so NLS libs can find
+the translation files), and you'll need to specify a "full" locale:
+
+  LANG=fr_CA gopchop
+
+
+-- 
+Kees Cook (mpeg2@outflux.net)
+http://outflux.net/

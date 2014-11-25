@@ -1,0 +1,924 @@
+# English translations for GOPchop package.
+# Copyright (C) 2003 Kees Cook
+# This file is distributed under the same license as the GOPchop package.
+# Nemesis the Warlock <mpeg2@outflux.net>, 2003.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: GOPchop 0.9\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2005-04-30 02:53-0700\n"
+"PO-Revision-Date: 2003-04-17 08:33-0700\n"
+"Last-Translator: Kees Cook <mpeg2@outflux.net>\n"
+"Language-Team: English <en@translate.freefriends.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ISO-8859-1\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ../src/Main.cpp:325
+msgid "Saving MPEG2"
+msgstr "Saving MPEG2"
+
+#: ../src/Main.cpp:374
+#, fuzzy, c-format
+msgid "Wrote %s (GOPs: %u, pictures: %u) in %d second (%%%sMB/s)\n"
+msgstr "Wrote %s (GOPs: %u) in %d second (%%%sMB/s)\n"
+
+#: ../src/Main.cpp:375
+#, fuzzy, c-format
+msgid "Wrote %s (GOPs: %u, pictures: %u) in %d seconds (%%%sMB/s)\n"
+msgstr "Wrote %s (GOPs: %u) in %d seconds (%%%sMB/s)\n"
+
+#: ../src/Main.cpp:419
+#, c-format
+msgid "Loaded %s in %d second (%%%sMB/s)\n"
+msgstr "Loaded %s in %d second (%%%sMB/s)\n"
+
+#: ../src/Main.cpp:420
+#, c-format
+msgid "Loaded %s in %d seconds (%%%sMB/s)\n"
+msgstr "Loaded %s in %d seconds (%%%sMB/s)\n"
+
+#: ../src/Main.cpp:425
+msgid "Caching"
+msgstr "Caching"
+
+#: ../src/Main.cpp:433
+msgid "Skipping offset cache writing.\n"
+msgstr "Skipping offset cache writing.\n"
+
+#: ../src/Main.cpp:437
+msgid "Done"
+msgstr "Done"
+
+#. update the count of clips
+#: ../src/Main.cpp:446
+#, c-format
+msgid "Clips: %d"
+msgstr "Clips: %d"
+
+#: ../src/Main.cpp:457
+msgid "unknown pathname"
+msgstr "unknown pathname"
+
+#: ../src/Main.cpp:509 ../src/Main.cpp:546 ../src/interface.c:864
+msgid "No Sequence Info Found"
+msgstr "No Sequence Info Found"
+
+#: ../src/Main.cpp:550
+#, c-format
+msgid "no GOPs ?!\n"
+msgstr "no GOPs ?!\n"
+
+#: ../src/Main.cpp:555 ../src/Main.cpp:560
+#, c-format
+msgid "NULL picture list ?!\n"
+msgstr "NULL picture list ?!\n"
+
+#: ../src/Main.cpp:565
+#, c-format
+msgid "NULL audio list ?!\n"
+msgstr "NULL audio list ?!\n"
+
+#: ../src/Main.cpp:570
+#, c-format
+msgid "NULL video list ?!\n"
+msgstr "NULL video list ?!\n"
+
+#: ../src/Main.cpp:575
+#, c-format
+msgid "no such GOP %d ?!\n"
+msgstr "no such GOP %d ?!\n"
+
+#: ../src/Main.cpp:580
+#, c-format
+msgid "GOP header missing?!\n"
+msgstr "GOP header missing?!\n"
+
+#: ../src/Main.cpp:585 ../src/GroupOfPictures.cpp:98
+#, c-format
+msgid "GOP header not available?!\n"
+msgstr "GOP header not available?!\n"
+
+#: ../src/Main.cpp:613
+#, c-format
+msgid "NULL GOP picture bounds?!\n"
+msgstr "NULL GOP picture bounds?!\n"
+
+#: ../src/Main.cpp:636
+#, c-format
+msgid "NULL picture?!\n"
+msgstr "NULL picture?!\n"
+
+#: ../src/Main.cpp:642
+#, c-format
+msgid "NULL picture bounds?!\n"
+msgstr "NULL picture bounds?!\n"
+
+#: ../src/Main.cpp:652
+#, c-format
+msgid "NULL picture VES vector?!\n"
+msgstr "NULL picture VES vector?!\n"
+
+#: ../src/Main.cpp:660
+#, c-format
+msgid "  Picture (%s: %02d)"
+msgstr "  Picture (%s: %02d)"
+
+#: ../src/Main.cpp:675
+#, c-format
+msgid "NULL GOP packet bounds?!\n"
+msgstr "NULL GOP packet bounds?!\n"
+
+#: ../src/Main.cpp:688
+#, c-format
+msgid "NULL GOP packet vector?!\n"
+msgstr "NULL GOP packet vector?!\n"
+
+#: ../src/Main.cpp:706
+#, c-format
+msgid "NULL GOP AES vector?!\n"
+msgstr "NULL GOP AES vector?!\n"
+
+#. display GOP
+#: ../src/Main.cpp:716
+#, c-format
+msgid "GOP (%02d:%02d:%02d.%02d%s%s%s)"
+msgstr "GOP (%02d:%02d:%02d.%02d%s%s%s)"
+
+#: ../src/Main.cpp:718
+msgid " drop"
+msgstr " drop"
+
+#: ../src/Main.cpp:718
+msgid " keep"
+msgstr " keep"
+
+#: ../src/Main.cpp:719
+msgid " closed"
+msgstr " closed"
+
+#
+#: ../src/Main.cpp:719
+msgid " open"
+msgstr " open"
+
+#: ../src/Main.cpp:720
+msgid " broken"
+msgstr " broken"
+
+#: ../src/Main.cpp:720
+msgid " whole"
+msgstr " whole"
+
+#. display audio info
+#: ../src/Main.cpp:731
+msgid "  Audio"
+msgstr "  Audio"
+
+#: ../src/Main.cpp:743
+#, c-format
+msgid "%dx%d: %s aspect, %s fps, %s%s"
+msgstr "%dx%d: %s aspect, %s fps, %s%s"
+
+#: ../src/Main.cpp:748
+msgid ", constrained"
+msgstr ", constrained"
+
+#: ../src/Main.cpp:758
+msgid "Bad Frame"
+msgstr "Bad Frame"
+
+#: ../src/Main.cpp:759
+msgid "I-Frame"
+msgstr "I-Frame"
+
+#: ../src/Main.cpp:760
+msgid "P-Frame"
+msgstr "P-Frame"
+
+#: ../src/Main.cpp:761
+msgid "B-Frame"
+msgstr "B-Frame"
+
+#: ../src/Main.cpp:797
+msgid "Could not load rc file -- using defaults.\n"
+msgstr "Could not load rc file -- using defaults.\n"
+
+#: ../src/Main.cpp:848
+#, c-format
+msgid "Unknown long argument index %d found!\n"
+msgstr "Unknown long argument index %d found!\n"
+
+#: ../src/Main.cpp:866
+#, c-format
+msgid "Video output options:\n"
+msgstr "Video output options:\n"
+
+#: ../src/Main.cpp:877
+#, c-format
+msgid "No such video driver: '%s'\n"
+msgstr "No such video driver: '%s'\n"
+
+#: ../src/Main.cpp:889
+#, c-format
+msgid "Unknown short argument '%c' found?!\n"
+msgstr "Unknown short argument '%c' found?!\n"
+
+#: ../src/Main.cpp:980
+msgid ""
+"Type 'off_t' is less than 8 bytes.\n"
+"Largefile support requires at least 8 bytes.\n"
+msgstr ""
+"Type 'off_t' is less than 8 bytes.\n"
+"Largefile support requires at least 8 bytes.\n"
+
+#: ../src/interface.c:91 ../src/interface.c:545
+msgid "GOPchop"
+msgstr "GOPchop"
+
+#: ../src/interface.c:103
+msgid "_File"
+msgstr "_File"
+
+#: ../src/interface.c:112
+#, fuzzy
+msgid "Load _MPEG-2"
+msgstr "Load MPEG2"
+
+#: ../src/interface.c:125
+#, fuzzy
+msgid "_Load Clip List"
+msgstr "_Save Clips"
+
+#: ../src/interface.c:138
+#, fuzzy
+msgid "_Save Clip List"
+msgstr "_Save Clips"
+
+#: ../src/interface.c:152
+msgid "_Export MPEG-2"
+msgstr ""
+
+#: ../src/interface.c:179
+#, fuzzy
+msgid "_Edit"
+msgstr "E_xit"
+
+#: ../src/interface.c:210
+#, fuzzy
+msgid "_View"
+msgstr "_File"
+
+#: ../src/interface.c:219
+msgid "Info Window"
+msgstr ""
+
+#: ../src/interface.c:225
+msgid "Video Window"
+msgstr ""
+
+#: ../src/interface.c:229
+msgid "_Help"
+msgstr "_Help"
+
+#: ../src/interface.c:238
+msgid "_About..."
+msgstr "_About..."
+
+#: ../src/interface.c:253
+msgid "Clips: 0"
+msgstr "Clips: 0"
+
+#: ../src/interface.c:295
+msgid "Start Mark"
+msgstr "Start Mark"
+
+#: ../src/interface.c:301
+msgid "no mark set"
+msgstr "no mark set"
+
+#: ../src/interface.c:307
+msgid "End Mark"
+msgstr "End Mark"
+
+#: ../src/interface.c:319
+msgid "Prev"
+msgstr "Prev"
+
+#: ../src/interface.c:326
+msgid "Run"
+msgstr "Run"
+
+#: ../src/interface.c:333
+msgid "Next"
+msgstr "Next"
+
+#: ../src/interface.c:351
+msgid "Run Speed"
+msgstr "Run Speed"
+
+#: ../src/interface.c:357
+msgid "Refresh"
+msgstr "Refresh"
+
+#: ../src/interface.c:527
+msgid "About..."
+msgstr "About..."
+
+#: ../src/interface.c:551
+msgid "CVS"
+msgstr "CVS"
+
+#: ../src/interface.c:557
+#, fuzzy
+msgid ""
+"Copyright 2001-2004\n"
+"Kees Cook <kees@outflux.net>\n"
+"\n"
+"GOPchop is a GOP-accurate MPEG2-PS editor.\n"
+"\n"
+"\n"
+"GOPchop comes with ABSOLUTELY NO WARRANTY.\n"
+"This is free software, and you are welcome\n"
+"to redistribute it under certain conditions;\n"
+"for details visit:\n"
+"\n"
+"http://www.gnu.org/copyleft/gpl.html\n"
+msgstr ""
+"Copyright 2001-2003\n"
+"Kees Cook <kees@outflux.net>\n"
+"\n"
+"GOPchop is a GOP-accurate MPEG2-PS editor.\n"
+"\n"
+"\n"
+"GOPchop comes with ABSOLUTELY NO WARRANTY.\n"
+"This is free software, and you are welcome\n"
+"to redistribute it under certain conditions;\n"
+"for details visit:\n"
+"\n"
+"http://www.gnu.org/copyleft/gpl.html\n"
+
+#: ../src/interface.c:568
+msgid "Cool"
+msgstr "Cool"
+
+#: ../src/interface.c:574
+msgid "(Image from www.sciencephotography.com)"
+msgstr "(Image from www.sciencephotography.com)"
+
+#: ../src/interface.c:635
+#, fuzzy
+msgid "Preferences"
+msgstr "_Preferences..."
+
+#: ../src/interface.c:665
+#, fuzzy
+msgid "Video Output Driver"
+msgstr "Video output options:\n"
+
+#: ../src/interface.c:689
+#, fuzzy
+msgid "Default Run Speed"
+msgstr "Run Speed"
+
+#: ../src/interface.c:708
+#, fuzzy
+msgid "Run Loop"
+msgstr "Run _Loop"
+
+#: ../src/interface.c:713
+#, fuzzy
+msgid "Auto Refresh"
+msgstr "Auto _Refresh"
+
+#: ../src/interface.c:718
+#, fuzzy
+msgid "Adjust Timestamps"
+msgstr "Adjust _Timestamps"
+
+#: ../src/interface.c:723
+#, fuzzy
+msgid "Drop Orphaned Frames"
+msgstr "Drop _Orphaned Frames"
+
+#: ../src/interface.c:728
+msgid "General"
+msgstr ""
+
+#
+#: ../src/interface.c:744
+#, fuzzy
+msgid "Ignore Errors"
+msgstr "Ignore _Errors"
+
+#: ../src/interface.c:750
+msgid "Developer"
+msgstr ""
+
+#: ../src/interface.c:839
+#, fuzzy
+msgid "GOP Info"
+msgstr "Info"
+
+#: ../src/interface.c:858
+msgid "Current GOP information:"
+msgstr "Current GOP information:"
+
+#: ../src/interface.c:909
+msgid "Delete"
+msgstr "Delete"
+
+#: ../src/interface.c:942
+msgid "Error"
+msgstr "Error"
+
+#: ../src/interface.c:965
+msgid "\"You have 20 seconds to comply.\""
+msgstr "\"You have 20 seconds to comply.\""
+
+#: ../src/interface.c:996
+msgid "That's annoying!"
+msgstr "That's annoying!"
+
+#: ../src/interface.c:1028
+msgid "Select MPEG File"
+msgstr ""
+
+#: ../src/interface.c:1073
+msgid "Open Session"
+msgstr ""
+
+#: ../src/interface.c:1118
+msgid "Save Session"
+msgstr ""
+
+#: ../src/interface.c:1162
+#, fuzzy
+msgid "Save MPEG As"
+msgstr "Save MPEG2"
+
+#. set version in window
+#: ../src/callbacks.cpp:369
+#, c-format
+msgid "GOPchop Version %s"
+msgstr "GOPchop Version %s"
+
+#: ../src/callbacks.cpp:889
+msgid "Oops.  NULL info in on_main_popup_delete_activate\n"
+msgstr "Oops.  NULL info in on_main_popup_delete_activate\n"
+
+#: ../src/support.c:90 ../src/support.c:114
+#, c-format
+msgid "Couldn't find pixmap file: %s"
+msgstr "Couldn't find pixmap file: %s"
+
+#: ../src/Bounds.cpp:52
+msgid "Undefined first requested?!\n"
+msgstr "Undefined first requested?!\n"
+
+#: ../src/Bounds.cpp:61
+msgid "Undefined max requested?!\n"
+msgstr "Undefined max requested?!\n"
+
+#: ../src/MPEG2Parser.cpp:139
+#, c-format
+msgid "header %s (length %d) not found\n"
+msgstr "header %s (length %d) not found\n"
+
+#: ../src/MPEG2Parser.cpp:143
+#, c-format
+msgid "%s (length %d) structure attach failed\n"
+msgstr "%s (length %d) structure attach failed\n"
+
+#: ../src/MPEG2Parser.cpp:147
+#, c-format
+msgid "stream has %s marker! (Need to finish parsing routine...)\n"
+msgstr "stream has %s marker! (Need to finish parsing routine...)\n"
+
+#: ../src/MPEG2Parser.cpp:151
+#, c-format
+msgid "expecting %s marker (length %d)\n"
+msgstr "expecting %s marker (length %d)\n"
+
+#: ../src/MPEG2Parser.cpp:181 ../src/MPEG2Parser.cpp:511
+#: ../src/MPEG2Parser.cpp:566
+msgid "header"
+msgstr "header"
+
+#: ../src/MPEG2Parser.cpp:195
+#, c-format
+msgid "found PES 0x%02X @ %llu (%d bytes)\n"
+msgstr "found PES 0x%02X @ %llu (%d bytes)\n"
+
+#: ../src/MPEG2Parser.cpp:214
+msgid "stream data"
+msgstr "stream data"
+
+#: ../src/MPEG2Parser.cpp:231
+msgid "padding data"
+msgstr "padding data"
+
+#: ../src/MPEG2Parser.cpp:278
+#, c-format
+msgid "Whoa: got PES id 0x%02X.  Skipping...\n"
+msgstr "Whoa: got PES id 0x%02X.  Skipping...\n"
+
+#: ../src/MPEG2Parser.cpp:286
+msgid "flag data"
+msgstr "flag data"
+
+#: ../src/MPEG2Parser.cpp:306 ../src/MPEG2Parser.cpp:318
+msgid "PTS data"
+msgstr "PTS data"
+
+#: ../src/MPEG2Parser.cpp:327
+msgid "DTS data"
+msgstr "DTS data"
+
+#: ../src/MPEG2Parser.cpp:356
+msgid "additional copy info"
+msgstr "additional copy info"
+
+#: ../src/MPEG2Parser.cpp:379
+msgid "extension data"
+msgstr "extension data"
+
+#: ../src/MPEG2Parser.cpp:387
+msgid "PES private data"
+msgstr "PES private data"
+
+#: ../src/MPEG2Parser.cpp:396
+msgid "PES extension pack field length"
+msgstr "PES extension pack field length"
+
+#: ../src/MPEG2Parser.cpp:402
+msgid "PES extension pack field header"
+msgstr "PES extension pack field header"
+
+#: ../src/MPEG2Parser.cpp:469
+msgid "ES data"
+msgstr "ES data"
+
+#: ../src/MPEG2Parser.cpp:539
+msgid "stream header"
+msgstr "stream header"
+
+#: ../src/MPEG2Parser.cpp:545
+#, c-format
+msgid "invalid stream_id 0x%02X\n"
+msgstr "invalid stream_id 0x%02X\n"
+
+#: ../src/MPEG2Parser.cpp:630
+msgid "Reading MPEG2"
+msgstr "Reading MPEG2"
+
+#: ../src/MPEG2Parser.cpp:679
+#, c-format
+msgid "expecting pack_start_code, got 0x%02X 0x%02X 0x%02X 0x%02X\n"
+msgstr "expecting pack_start_code, got 0x%02X 0x%02X 0x%02X 0x%02X\n"
+
+#: ../src/MPEG2Parser.cpp:695
+#, c-format
+msgid "garbage data seen from %%%s to %%%s.\n"
+msgstr "garbage data seen from %%%s to %%%s.\n"
+
+#: ../src/MPEG2Parser.cpp:701
+msgid "More than 100K of garbage -- aborting parse.\n"
+msgstr "More than 100K of garbage -- aborting parse.\n"
+
+#: ../src/MPEG2Parser.cpp:706
+msgid "found long-lost pack_start_code\n"
+msgstr "found long-lost pack_start_code\n"
+
+#: ../src/MPEG2Parser.cpp:792
+msgid "Building GOP table"
+msgstr "Building GOP table"
+
+#: ../src/MPEG2Parser.cpp:803
+msgid "NULL packet list?!\n"
+msgstr "NULL packet list?!\n"
+
+#: ../src/MPEG2Parser.cpp:808
+msgid "NULL video list?!\n"
+msgstr "NULL video list?!\n"
+
+#: ../src/MPEG2Parser.cpp:813
+msgid "NULL audio list?!\n"
+msgstr "NULL audio list?!\n"
+
+#: ../src/MPEG2Parser.cpp:818
+msgid "NULL picture list?!\n"
+msgstr "NULL picture list?!\n"
+
+#: ../src/MPEG2Parser.cpp:823
+msgid "NULL GOP list?!\n"
+msgstr "NULL GOP list?!\n"
+
+#: ../src/MPEG2Parser.cpp:841 ../src/m2parse.cpp:192
+msgid "NULL packet?!\n"
+msgstr "NULL packet?!\n"
+
+#: ../src/MPEG2Parser.cpp:847
+#, c-format
+msgid "Garbage was detected at GOP %d\n"
+msgstr "Garbage was detected at GOP %d\n"
+
+#: ../src/MPEG2Parser.cpp:867
+msgid "NULL VES?!\n"
+msgstr "NULL VES?!\n"
+
+#: ../src/MPEG2Parser.cpp:891
+msgid "Sequence header not available?!\n"
+msgstr "Sequence header not available?!\n"
+
+#: ../src/MPEG2Parser.cpp:963
+msgid ""
+"Whoa: no GOP seen before an I-Frame!?\n"
+" (You might want to re-multiplex your MPEG2-PS file first.)\n"
+msgstr ""
+"Whoa: no GOP seen before an I-Frame!?\n"
+" (You might want to re-multiplex your MPEG2-PS file first.)\n"
+
+#: ../src/MPEG2Parser.cpp:972
+msgid ""
+"No GOP seen before first Picture header.  Attempting to do I-frame "
+"splitting...\n"
+msgstr ""
+"No GOP seen before first Picture header.  Attempting to do I-frame "
+"splitting...\n"
+
+#: ../src/MPEG2Parser.cpp:989
+#, c-format
+msgid ""
+"Whoa: I-Frame number %d seen in the same GOP!?\n"
+" (You might want to re-multiplex your MPEG2-PS file first.)\n"
+msgstr ""
+"Whoa: I-Frame number %d seen in the same GOP!?\n"
+" (You might want to re-multiplex your MPEG2-PS file first.)\n"
+
+#: ../src/MPEG2Parser.cpp:1021
+msgid "NULL AES?!\n"
+msgstr "NULL AES?!\n"
+
+#: ../src/Parser.cpp:117
+msgid "already initialized\n"
+msgstr "already initialized\n"
+
+#: ../src/Parser.cpp:125
+#, c-format
+msgid "cannot open '%s': %s\n"
+msgstr "cannot open '%s': %s\n"
+
+#: ../src/Parser.cpp:129
+msgid ""
+" (write permissions are needed, but the original file won't be changed.)\n"
+msgstr ""
+" (write permissions are needed, but the original file won't be changed.)\n"
+
+#: ../src/Parser.cpp:138
+#, c-format
+msgid "cannot get file size: %s\n"
+msgstr "cannot get file size: %s\n"
+
+#: ../src/Parser.cpp:145
+#, c-format
+msgid "'%s' is not a file!\n"
+msgstr "'%s' is not a file!\n"
+
+#: ../src/Parser.cpp:157 ../src/Parser.cpp:249
+msgid "cannot memory map file\n"
+msgstr "cannot memory map file\n"
+
+#: ../src/Parser.cpp:222
+#, c-format
+msgid ""
+"mmap area too large (must increase window size!)\n"
+"pagedbytes: %d mmap_max: %d\n"
+"location: %llu pagedloc: %llu\n"
+"bytes: %d\n"
+msgstr ""
+"mmap area too large (must increase window size!)\n"
+"pagedbytes: %d mmap_max: %d\n"
+"location: %llu pagedloc: %llu\n"
+"bytes: %d\n"
+
+#: ../src/Parser.cpp:233
+msgid "munmap failed\n"
+msgstr "munmap failed\n"
+
+#: ../src/Parser.cpp:235
+msgid "munmap\n"
+msgstr "munmap\n"
+
+#: ../src/Parser.cpp:247
+msgid "mmap failed\n"
+msgstr "mmap failed\n"
+
+#: ../src/m2parse.cpp:98
+msgid "can't find 'xv' output\n"
+msgstr "can't find 'xv' output\n"
+
+#: ../src/m2parse.cpp:108
+msgid "can't open 'xv' output\n"
+msgstr "can't open 'xv' output\n"
+
+#: ../src/m2parse.cpp:126
+#, c-format
+msgid "Usage: %s INPUT OUTPUT\n"
+msgstr "Usage: %s INPUT OUTPUT\n"
+
+#: ../src/m2parse.cpp:132
+#, c-format
+msgid "Usage: %s INPUT\n"
+msgstr "Usage: %s INPUT\n"
+
+#: ../src/m2parse.cpp:164
+#, c-format
+msgid "GOPs: %d\n"
+msgstr "GOPs: %d\n"
+
+#: ../src/m2parse.cpp:180
+msgid "Rendering GOPs"
+msgstr "Rendering GOPs"
+
+#: ../src/m2parse.cpp:207
+msgid "NULL vector area?!\n"
+msgstr "NULL vector area?!\n"
+
+#: ../src/m2parse.cpp:216
+msgid "NULL ves?!\n"
+msgstr "NULL ves?!\n"
+
+#: ../src/m2parse.cpp:309
+msgid "press enter to quit..."
+msgstr "press enter to quit..."
+
+#~ msgid "Output window missing!\n"
+#~ msgstr "Output window missing!\n"
+
+#~ msgid "MPEG2 decoder missing!\n"
+#~ msgstr "MPEG2 decoder missing!\n"
+
+#~ msgid "decode called with a missing buffer!?\n"
+#~ msgstr "decode called with a missing buffer!?\n"
+
+#~ msgid "MPEG2 decoder info not available!?\n"
+#~ msgstr "MPEG2 decoder info not available!?\n"
+
+#~ msgid "Got STATE_SEQUENCE without a sequence!?\n"
+#~ msgstr "Got STATE_SEQUENCE without a sequence!?\n"
+
+#~ msgid "Failed to setup display\n"
+#~ msgstr "Failed to setup display\n"
+
+#, fuzzy
+#~ msgid "Got STATE_PICTURE* without a current_fbuf!?\n"
+#~ msgstr "Got STATE_PICTURE without a current_fbuf!?\n"
+
+#~ msgid "Can't find output driver '%s'\n"
+#~ msgstr "Can't find output driver '%s'\n"
+
+#~ msgid "Can't open output driver '%s'\n"
+#~ msgstr "Can't open output driver '%s'\n"
+
+#~ msgid "Using x86 MMXext acceleration\n"
+#~ msgstr "Using x86 MMXext acceleration\n"
+
+#~ msgid "Using x86 3DNow acceleration\n"
+#~ msgstr "Using x86 3DNow acceleration\n"
+
+#~ msgid "Using x86 MMX acceleration\n"
+#~ msgstr "Using x86 MMX acceleration\n"
+
+#~ msgid "Using PowerPC Altivec acceleration\n"
+#~ msgstr "Using PowerPC Altivec acceleration\n"
+
+#~ msgid "Using Alpha MVI acceleration\n"
+#~ msgstr "Using Alpha MVI acceleration\n"
+
+#~ msgid "Using Alpha acceleration\n"
+#~ msgstr "Using Alpha acceleration\n"
+
+#~ msgid "Using Sparc VIS acceleration\n"
+#~ msgstr "Using Sparc VIS acceleration\n"
+
+#~ msgid "Using Sparc VIS2 acceleration\n"
+#~ msgstr "Using Sparc VIS2 acceleration\n"
+
+#~ msgid "Using no special acceleration\n"
+#~ msgstr "Using no special acceleration\n"
+
+#~ msgid "Cannot initialize mpeg2 decoder!\n"
+#~ msgstr "Cannot initialize mpeg2 decoder!\n"
+
+#~ msgid "Pipe command required.  Try --pipe\n"
+#~ msgstr "Pipe command required.  Try --pipe\n"
+
+#~ msgid "Cannot figure out from environment what shell to exec.\n"
+#~ msgstr "Cannot figure out from environment what shell to exec.\n"
+
+#~ msgid "\tNo GOPs\n"
+#~ msgstr "\tNo GOPs\n"
+
+#~ msgid "\tNo packets\n"
+#~ msgstr "\tNo packets\n"
+
+#~ msgid "\tGOP %d missing\n"
+#~ msgstr "\tGOP %d missing\n"
+
+#~ msgid "Overwrite?"
+#~ msgstr "Overwrite?"
+
+#~ msgid "This file already exists."
+#~ msgstr "This file already exists."
+
+#~ msgid "filename"
+#~ msgstr "filename"
+
+#~ msgid "Overwrite"
+#~ msgstr "Overwrite"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancel"
+
+#~ msgid "_Open"
+#~ msgstr "_Open"
+
+#~ msgid "Clear Clips"
+#~ msgstr "Clear Clips"
+
+#~ msgid "_Close"
+#~ msgstr "_Close"
+
+#~ msgid "_Options"
+#~ msgstr "_Options"
+
+#~ msgid "Decoder threw 'STATE_INVALID'.  This needs to be handled better!\n"
+#~ msgstr "Decoder threw 'STATE_INVALID'.  This needs to be handled better!\n"
+
+#~ msgid ""
+#~ "Decoder threw 'STATE_INVALID_END'.  This needs to be handled better!\n"
+#~ msgstr ""
+#~ "Decoder threw 'STATE_INVALID_END'.  This needs to be handled better!\n"
+
+#~ msgid "NULL GOP?!\n"
+#~ msgstr "NULL GOP?!\n"
+
+#~ msgid "NULL GOP header?!\n"
+#~ msgstr "NULL GOP header?!\n"
+
+#~ msgid "NULL packet bounds?!\n"
+#~ msgstr "NULL packet bounds?!\n"
+
+#~ msgid "NULL PES?!\n"
+#~ msgstr "NULL PES?!\n"
+
+#~ msgid "Ran out of memory!?\n"
+#~ msgstr "Ran out of memory!?\n"
+
+#~ msgid "unavailable memory?!\n"
+#~ msgstr "unavailable memory?!\n"
+
+#~ msgid "\tWriting @ %llu for %d bytes\n"
+#~ msgstr "\tWriting @ %llu for %d bytes\n"
+
+#~ msgid "write failed\n"
+#~ msgstr "write failed\n"
+
+#~ msgid "Ready"
+#~ msgstr "Ready"
+
+#~ msgid "Filename"
+#~ msgstr "Filename"
+
+#~ msgid "First GOP"
+#~ msgstr "First GOP"
+
+#~ msgid "Last GOP"
+#~ msgstr "Last GOP"
+
+#~ msgid "Item"
+#~ msgstr "Item"
+
+#~ msgid "Parent Offset"
+#~ msgstr "Parent Offset"
+
+#~ msgid "Data Bytes"
+#~ msgstr "Data Bytes"
+
+#~ msgid "Error loading pixmap file: %s"
+#~ msgstr "Error loading pixmap file: %s"
+
+#~ msgid "Using Mlib acceleration\n"
+#~ msgstr "Using Mlib acceleration\n"
+
+#~ msgid "Wrote %s in %d seconds (%%%sMS/s)\n"
+#~ msgstr "Wrote %s in %d seconds (%%%sMB/s)\n"
+
+#~ msgid "\tdecoder not running?\n"
+#~ msgstr "\tdecoder not running?\n"
+
+#~ msgid "Encountered bad enough video data to disable decoder!\n"
+#~ msgstr "Encountered bad enough video data to disable decoder!\n"

@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=GOPchop
+Comment=MPEG2 GOP-accurate editor
+Version=1.0
+Type=Application
+Categories=Graphics;AudioVideo;GTK;
+MimeType=video/mpeg
+Exec=gopchop %F
+TryExec=gopchop
+Terminal=false
+StartupNotify=true
+Icon=gopchop.png

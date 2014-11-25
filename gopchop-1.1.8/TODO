@@ -1,0 +1,247 @@
+GOPchop
+-------
+The development goals for this project are to produce a stable, complete
+tool that does one thing, and does it well.  The 1.0 release established
+all of GOPchop's basic functionality.  The development work from 1.0 to
+2.0 will focus on eliminating all flakiness and making it a reliable,
+useful tool.
+
+
+Development Milestone 14 (Release 1.1.x) - User Interface Upgrade
+========================================
+This development series focuses on improving the user interface by
+upgrading it to Glade2 and adding other features like Scrollwheel
+support, etc.
+
+   * (DONE) Save clip info (GOP indexes) for an mpeg (.clips)
+   * (DONE) Add option "clip-save report to file" (default=off)
+   * (DONE) Add option "remove leading B frames on a spliced open GOPs" (default=yes)
+   * (DONE) Incorporate System Header Prepending patch
+   * (DONE) Force refresh during "Run"
+   * (DONE) Fix up displaying correct frame during a GOP Display or Run
+   * (DONE) Thoroughly debug the display code, and add more logic to compensate
+     for libmpeg2's picture flushing limitations.
+   * (DONE) Set up a 'make check' Makefile target and create an empty
+     tests/ directory
+   * (DONE) Research into timestamps and why it isn't working
+   * (DONE) Use "parseable_items" to populate preferences window
+   * Inject nearest sequence header into saved streams
+   * Establish Stable Branch 1.2.0
+
+
+Development Milestone 15 (~Release 1.3.x) - Project Organization
+=========================================
+The 1.3 development series will focus on establishing Open Source style
+practices in GOPchop, to enable the community to be more involved in the
+maintenance of the software.
+
+   * Review and incorporate pending patch bundles
+   * Create a list of project "invariants" defining the scope of the
+     project 
+   * Add option to re-write time-stamps in the resulting MPEG. (based on
+     GopFixup) 
+   * Load packet information to a text file (.gop) for faster parse times
+     (Probably in the patch bundle)
+   * detect non-MPEG2-PS files (or rather, detect MPEG1 files quickly)
+     (Probably in the patch bundle)
+   * Fix for issue with missing sequence headers
+     (Probably in the patch bundle)
+   * Write an article describing what GOPchop is, and publish it at
+     FootNotes (news.gnome.org)
+   * Make output streams sane for DVD authoring tools
+   * Rename "Run" to "Run Source"
+   * Add "Run Clips"
+   * Add option to add NAV packets to output stream
+   * Add option to add timestamps so gop_fixup doesn't need to be used
+   * Fix plural forms -
+     http://www.gnu.org/software/gettext/manual/html_mono/gettext.html#SEC150 
+   * Fix GUI contexts:
+     http://www.gnu.org/software/gettext/manual/html_mono/gettext.html#SEC151
+   * Post a call-for-translators to GNOME i18n list
+   * Create one simple unit test and hook it up to run with 'make test'
+   * Create a rough outline for a "GOPchop Design Specification"
+   * Establish Stable Branch 1.4.0
+
+
+Development Milestone 16 (~Release 1.5.x) - Parsing Library Upgrade
+=========================================
+This development series conducts a major upgrade to the underlying MPEG
+library, switching to libmpegparse.
+
+   * Add libmpegparse as a dependency
+   * Create a simple benchmark for testing parser speed
+   * Produce a first draft of a "GOPchop Design Specification"
+   * Convert internal code over to use libmpegparse
+   * Command-line interface for cutting video at specified points without
+     using the GUI (see mpgtx?  EDL?)
+   * Create a way to spit out .gop files from the command line
+   * "run in reverse"
+   * Distinguish between Frames and Fields (do I need to?)
+   * Figure out how to measure time within spliced GOPs; plan implementing
+   * Add configurable option to pipe debug output of parser to a file
+   * Add right-click pop-up context menu to Info clist for saving:
+     + single GOP as MPEG2-PS file
+     + single I-frame as jpg or something
+     + audio packets of a GOP as a raw ES stream file
+   * Investigate System Header prepending logic
+   * Adjust PTS values like the GOP timestamps
+   * When loading a file, find the GOP's while loading the packs/videos
+   * Write an outline for basic/advanced user guides
+   * Create a few regression tests using the new command-line interface
+   * Ensure new parser runs faster than old one
+   * Establish Stable Branch 1.6.0
+
+
+Development Milestone 17 (~~Release 1.7.x) - Productization
+========================================== 
+In this milestone, the goal is to establish a foundational set of
+materials (tests and documents) that will pave the path to eliminating
+remaining bugs.
+
+   * Add support for MPEG TS (Transport Stream), to enable editing of
+     videos recorded with a DVB card
+   * Make load/save dialog remember location after exit
+   * Change font in error box header
+   * Add time offsets to the clip list, along with GOP number
+   * Create little "time" graphic for showing how long clips are in clist
+   * Add "1 of 50..." info to Info box for GOP numbers.
+   * Figure out how to auto-resize the error message window
+   * Issue error when trying to close/exit with clips still in list
+   * Issue warning about saving a clip if the final position hasn't been
+     saved (i.e., a clip has been "start"ed, but not "finish"ed.)
+   * Issue warning when MPEG2-PS format resists GOP closing/splitting
+   * Produce a first draft of a "User's Guide"
+   * Produce a first draft of an "Advanced Usage Guide"
+   * Complete writing "GOPchop Design Specification"
+   * Create remaining tests and ensure 'make test' invokes them
+   * Establish Stable Branch 1.8.0
+
+
+Development Milestone 18 (~~Release 1.9.x) - Testing
+==========================================
+In this development series, the goal is to wipe out every last bug.
+A hard feature freeze will be imposed.  The goal is to make the 2.0.0
+release _never_ crash, and _never_ corrupt a stream it processes.
+
+   * Review and incorporate latest patches
+   * Find way to suppress repeated error messages
+   * Complete writing a "User's Guide"
+   * Complete writing an "Advanced Usage Guide"
+   * Establish Stable Branch 2.0.0
+
+
+
+Future
+======
+- have a button to just drop the current GOP number to stdout or
+  have it available on the clipboard, or change modes to just
+  save marks, or something like that. (Matthias Schniedermeyer's use
+  of mkdvd: http://www.haraldmaiss.de/)
+
+- have a "last GOP" window while selecting start-frame of a clip
+
+- if FILE mtime is greater than .gop mtime, regenerate .gop file?
+	- or, option to skip .gop reading (and regenerate)
+	- option to save .gop stuff
+
+- report audio format (hard)
+
+- add "Run Clips"
+	- this requires re-vamping the packet-tracking mechanisms so that
+	  the GOP-type can arbitrarily change information within it's packet
+	  temporarily.
+
+- add "detailed" info section to info window.  For example,
+	the clist should start with the "GOP" expanded to show
+		Packets
+		Pictures
+		Audio
+	each Packet list can be expanded to show each of the system packets
+	each Picture item can be expanded to show each of the video packets
+	each Audio item can be expanded to show each of the audio packets
+
+- get audio playable.  Maybe figure out a way to link to/control mplayer?
+	- this requires having both "seek to byte" and "show only X frames"
+	  to work from the "slave" mode.  Source to mplayer didn't want
+	  to do that.
+
+- finish weird PES header flag parsers
+	- or, optionally, totally skip header flags?  weaker parser, but
+	  a faster parser maybe?  Or maybe disk will continue to be the
+	  limiting factor?  Make this a configurable option?
+
+- add time offset to scroll bar somewhere.  maybe in a centered box below
+  the clip list?
+
+- change mmap interface somehow to not require writable files
+	- this will be addressed by the private GOP area changes mentioned
+	  below.
+
+- make clip list editable to hand-move start/end markers
+	- maybe add a pair of arrow buttons to affect the currently
+	  selected clip's start and end markers?
+
+
+mpegcat
+-------
+- i18n tagging (mpeg2consts.c too)
+
+
+gtkspu
+------
+- i18n tagging
+- bind arrows, space, and backspace to step forward/back through SPU seqs
+- use future "libmpeg2ps" to open an mpg instead of a ".spu"
+- get color info from the DVD files
+
+
+
+
+Thoughts
+
+- I care about:
+	- Pack's: they carry SCR: I shouldn't mess with this, they wrap:
+	  - System packets: they carry rate & bounds
+	  - VES packets: they define the video stream, and carry:
+	    - SEQ headers
+	    - GOP headers
+	    - Picture headers
+	  - other packets (audio, stuffing, whatever)
+
+I must have a GOP before each I-frame.
+I must have (or build) a SEQ header in front of each split, minimally, and
+	in front of each GOP maximally.
+I must include all AES Packs between GOPs in the prior GOP.
+A System Header must follow the first Pack.  All System Headers must be the
+        same.
+
+
+
+I must build a table of:
+
+System header locations, parent Pack, and length (correctable)
+GOP header locations, parent Pack, and last seen SEQ
+Picture header locations, parent Pack, and last seen GOP
+SEQ header locations, and parent Pack
+PES packet locations, and length (which must be corrected for dropped frames)
+Pack packet locations, and length (which must be corrected for dropped frames)
+
+I must re-write:
+- GOP "closed" and "broken" flags
+- VES to drop open-GOP B-frames following a GOP/I-frame
+	- requires they are "exclusively" enclosed in Packs
+- packet lengths where I need to
+
+I could re-write:
+- GOP time codes
+
+When I write, I must write Packs.  Any added data (SEQ headers) will be added
+either as:
+- stand-alone Pack with stand-alone VES packet
+- prepended to a VES packet, having both VES and Pack packets' length increased
+
+Detect/Deal With "dangerous" situations:
+- data from more than one picture in the same Pack (dangerous for dropping
+  orphans)
+- lack of system header in first saved Pack
+

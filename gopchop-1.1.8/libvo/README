@@ -1,0 +1,10 @@
+This libvo was taken from mpeg2dec version 0.4.0.  So far, the following
+changes have been made:
+	- stuff to make it work outside of mpeg2dec:
+	        - corrected mpeg2*.h include paths
+		- added top-level includes path
+	- features (merged into libmpeg2 CVS):
+		- xshm for remote display from Simon Truss
+		- fixing up Simon Truss's patch to work for Xv
+	- features (submitted to libmpeg2):
+		- window_handle function for redraw support
